@@ -22,13 +22,13 @@ jobs:
     - name: "Build Java Image"
       uses: okteto/build@master
       with:
-        tag: registry.cloud.okteto.net/isandesh1986/mts-java:${{ github.sha }}
+        tag: registry.cloud.okteto.net/isandesh1986/mts-java:latest
         file: java/Dockerfile.githubactions
 
     - name: "Build Angular Image"
       uses: okteto/build@master
       with:
-        tag: registry.cloud.okteto.net/isandesh1986/mts-angular:${{ github.sha }}
+        tag: registry.cloud.okteto.net/isandesh1986/mts-angular:latest
         file: angular/Dockerfile.githubactions
 
     - name: "Create deployment"
