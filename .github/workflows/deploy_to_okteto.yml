@@ -10,28 +10,28 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - uses: okteto/login@master
+    - uses: okteto/login@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
         
     - name: "Activate personal namespace"
-      uses: okteto/namespace@master
+      uses: okteto/namespace@latest
       with:
         name: isandesh1986
     
     - name: "Build Java Image"
-      uses: okteto/build@master
+      uses: okteto/build@latest
       with:
         tag: registry.cloud.okteto.net/isandesh1986/mts-java:latest
         file: java/Dockerfile.githubactions
 
     - name: "Build Angular Image"
-      uses: okteto/build@master
+      uses: okteto/build@latest
       with:
         tag: registry.cloud.okteto.net/isandesh1986/mts-angular:latest
         file: angular/Dockerfile.githubactions
 
     - name: "Create deployment"
-      uses: okteto/apply@master
+      uses: okteto/apply@latest
       with:
         manifest: deployment.yaml
