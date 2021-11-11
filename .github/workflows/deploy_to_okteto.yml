@@ -20,5 +20,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
-        name: pr-${{ github.event.number }}-sujith-mn
+        name: pr-${{ github.event.number }}-isandesh1986
         scope: personal
