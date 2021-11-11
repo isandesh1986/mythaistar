@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: angular
-        image: isandesh/my-thai-star-angular:latest
+        image: registry.cloud.okteto.net/isandesh1986/mts-angular
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: java
-        image: isandesh/my-thai-star-java:latest
+        image: registry.cloud.okteto.net/isandesh1986/mts-java
         imagePullPolicy: Always
         ports:
           - name: http
