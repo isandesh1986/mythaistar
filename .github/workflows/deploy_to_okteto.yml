@@ -3,8 +3,7 @@ name: Deploy to Okteto
 on: pull_request
 
 jobs:
-
-  preview:
+  deploy:
     runs-on: ubuntu-latest
     steps:
 
