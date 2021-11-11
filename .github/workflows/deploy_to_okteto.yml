@@ -19,6 +19,18 @@ jobs:
       uses: okteto/namespace@master
       with:
         name: isandesh1986
+    
+    - name: "Build Java Image"
+      uses: okteto/build@master
+      with:
+        tag: registry.cloud.okteto.net/isandesh1986/mts-java
+        file: java/Dockerfile.githubactions
+
+    - name: "Build Angular Image"
+      uses: okteto/build@master
+      with:
+        tag: registry.cloud.okteto.net/isandesh1986/mts-angular
+        file: angular/Dockerfile.githubactions
 
     - name: "Create deployment"
       uses: okteto/apply@master
