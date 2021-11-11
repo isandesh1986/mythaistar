@@ -14,11 +14,13 @@ jobs:
     - uses: okteto/login@master
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
-
-    - name: Deploy preview environment
-      uses: okteto/deploy-preview@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        
+    - name: "Activate personal namespace"
+      uses: okteto/namespace@master
       with:
-        name: pr-${{ github.event.number }}-isandesh1986
-        scope: personal
+        name: isandesh1986
+
+    - name: "Create deployment"
+      uses: okteto/apply@master
+      with:
+        manifest: /k8s/deployment.yaml
