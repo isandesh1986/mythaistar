@@ -1,4 +1,4 @@
-name: Okteto-preview
+name: Deploy to Okteto
 
 on: pull_request
 
