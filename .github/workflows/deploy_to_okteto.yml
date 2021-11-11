@@ -23,13 +23,11 @@ jobs:
       uses: okteto/build@latest
       with:
         tag: registry.cloud.okteto.net/isandesh1986/mts-java:latest
-        file: java/Dockerfile.githubactions
-
+        
     - name: "Build Angular Image"
       uses: okteto/build@latest
       with:
-        tag: registry.cloud.okteto.net/isandesh1986/mts-angular:latest
-        file: angular/Dockerfile.githubactions
+        tag: registry.cloud.okteto.net/isandesh1986/mts-angular:latest       
 
     - name: "Create deployment"
       uses: okteto/apply@latest
