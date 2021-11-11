@@ -1,0 +1,24 @@
+name: Okteto-preview
+
+on: pull_request
+
+jobs:
+
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - uses: okteto/login@master
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+
+    - name: Deploy preview environment
+      uses: okteto/deploy-preview@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        name: pr-${{ github.event.number }}-sujith-mn
+        scope: personal
