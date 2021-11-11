@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular
+  labels:
+    app: mts
+spec:
+  selector:
+    matchLabels:
+      app: mts
+      tier: angular
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mts
+        tier: angular
+    spec:
+      containers:
+      - name: angular
+        image: isandesh/my-thai-star-angular:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: http
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular
+  labels:
+    app: mts
+    tier: angular
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http
+    name: http
+  selector:
+    app: mts
+    tier: angular
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java
+  labels:
+    app: mts
+spec:
+  selector:
+    matchLabels:
+      app: mts
+      tier: java
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mts
+        tier: java
+    spec:
+      containers:
+      - name: java
+        image: isandesh/my-thai-star-java:latest
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java
+  labels:
+    app: mts
+    tier: java
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 8081
+    name: http
+  selector:
+    app: mts
+    tier: java
+---
