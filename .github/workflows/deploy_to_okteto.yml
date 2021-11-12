@@ -19,18 +19,6 @@ jobs:
       with:
         name: isandesh1986
     
-    - name: "Build Java Image"
-      uses: okteto/build@latest
-      with:
-        tag: registry.cloud.okteto.net/isandesh1986/mts-java:latest
-        file: java/Dockerfile
-        
-    - name: "Build Angular Image"
-      uses: okteto/build@latest
-      with:
-        tag: registry.cloud.okteto.net/isandesh1986/mts-angular:latest
-        file: angular/Dockerfile
-
     - name: "Create deployment"
       uses: okteto/apply@latest
       with:
